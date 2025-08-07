@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Filosofía</title>
+
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quimica.html">Química</a></li>
+        <li><a href="biologia.html">Biología</a></li>
+        <li><a href="filosofia.html">Filosofía</a></li>
+    </ul>
+  <style>
+    body {
+     font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #fff0f6;
+      color: #4a004e;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff66b2, #cc66ff);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    header img {
+      width: 80px;
+      vertical-align: middle;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #ffb3da;
+      padding: 15px;
+    }
+
+    nav button {
+      background-color: #cc66ff;
+      border: none;
+      color: white;
+      margin: 10px;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background-color: #a64dff;
+    }
+
+    .content {
+      display: none;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    h2 {
+      color: #cc33cc;
+    }
+
+    img.lab {
+      width: 200px;
+      display: block;
+      margin: 15px auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffd9ec;
+      margin-top: 40px;
+      color: #7a007a;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Explora el maravilloso mundo de la química</h1>
+    <p>🔬 Química Básica</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Laboratory_glassware.svg/1200px-Laboratory_glassware.svg.png" alt="matraces" />
+  </header>
+
+  <nav>
+    <button onclick="showContent('historia-quimica')">Historia de la Química</button>
+    <button onclick="showContent('tabla')">Tabla Periódica</button>
+    <button onclick="showContent('configuracion')">Configuración Electrónica</button>
+    <button onclick="showContent('iones')">Iones</button>
+    <button onclick="showContent('materia')">La Materia</button>
+    <button onclick="showContent('estructura')">Estructura Atómica</button>
+  </nav>
+
+  <div id="historia-quimica" class="content active">
+    <h2>📚 Historia de la Química</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/3153/3153012.png" alt="historia química" class="lab">
+    <p>La química se originó en la antigüedad como alquimia. Los alquimistas buscaban transformar metales en oro y encontrar el elixir de la vida. En el siglo XVIII, Antoine Lavoisier sentó las bases de la química moderna con la Ley de Conservación de la Masa. Posteriormente, científicos como John Dalton, Dmitri Mendeléyev, y Marie Curie revolucionaron la química con nuevas teorías atómicas, descubrimientos de elementos y estudios de la radiactividad.</p>
+  </div>
+
+  <div id="tabla" class="content">
+    <h2>🧪 Historia de la Tabla Periódica</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/2885/2885304.png" alt="tabla periódica" class="lab">
+    <p>La tabla periódica fue creada por Dmitri Mendeléyev en 1869, organizando los elementos por masa atómica y propiedades químicas. Su genialidad fue dejar espacios vacíos para elementos aún no descubiertos. Con el tiempo, se ajustó según el número atómico. Hoy en día, es una herramienta esencial para entender las propiedades, familias y relaciones entre los elementos.</p>
+  </div>
+
+  <div id="configuracion" class="content">
+    <h2>🔋 Configuración Electrónica</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/4213/4213474.png" alt="configuración" class="lab">
+    <p>La configuración electrónica indica cómo se distribuyen los electrones en los niveles y subniveles de energía de un átomo. Se representa con notaciones como 1s² 2s² 2p⁶. Sigue el principio de Aufbau (llenado de orbitales de menor energía), el principio de exclusión de Pauli (dos electrones por orbital con espines opuestos) y la regla de Hund (los electrones se distribuyen en orbitales vacíos antes de aparearse).</p>
+  </div>
+
+  <div id="iones" class="content">
+    <h2>⚡ Iones: Cationes y Aniones</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/3909/3909444.png" alt="iones" class="lab">
+    <p>Un ion es un átomo o grupo de átomos con carga eléctrica. Los cationes tienen carga positiva (pierden electrones) y los aniones carga negativa (ganan electrones). Los iones son fundamentales en la formación de compuestos iónicos como la sal común (NaCl), y en procesos biológicos como la transmisión nerviosa.</p>
+  </div>
+
+  <div id="materia" class="content">
+    <h2>🌡️ La Materia y sus Estados</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/4327/4327076.png" alt="materia" class="lab">
+    <p>La materia es todo lo que tiene masa y ocupa espacio. Sus estados clásicos son: sólido (forma y volumen definidos), líquido (volumen definido, forma variable), gas (forma y volumen variables) y plasma (gas ionizado, presente en estrellas). También existen estados exóticos como el condensado de Bose-Einstein.</p>
+  </div>
+
+  <div id="estructura" class="content">
+    <h2>🧬 Estructura Atómica</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/4021/4021668.png" alt="estructura" class="lab">
+    <p>El átomo está compuesto por un núcleo (con protones y neutrones) y una nube electrónica (con electrones). El número de protones define el elemento (número atómico), mientras que los neutrones afectan la masa y forman isótopos. Los electrones, organizados en niveles, determinan la reactividad química del átomo.</p>
+  </div>
+
+  <footer>
+    <p>© 2025 Química Escolar - Diseñada con 💜 y ciencia</p>
+  </footer>
+
+  <script>
+    function showContent(id) {
+      const sections = document.querySelectorAll('.content');
+      sections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
+</nav>
+</header>
+
+<main>
+<h2></h2>
+<p></p>
+<h2></h2>
+<p></p>
+<p></p>
+</main>
+
+</footer>
+
+
+</footer> 
+
+</body>
+</html>
