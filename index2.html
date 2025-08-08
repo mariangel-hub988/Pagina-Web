@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenida - Página Web Educativa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #007BFF, #00BFA6);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    a {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 1rem;
+      color: white;
+      background: #FF6F61;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    a:hover {
+      background: #ff4a3d;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>¡Bienvenido a mi Página Web Educativa! 📚</h1>
+    <p>Aprende, explora y descubre contenido de forma sencilla y divertida.</p>
+    <a href="Mi-sitio-web/index.html">Entrar al sitio</a>
+  </div>
+</body>
+</html>
