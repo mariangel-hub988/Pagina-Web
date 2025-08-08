@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nuestra Página Web</title>
+
+  <!-- Fuente elegante tipo Zara -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      color: #FAFAFA;
+      background-color: #111111;
+    }
+
+    header {
+      background-color: rgba(0,0,0,0.7);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #F5F5F5;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #000000;
+      margin: 0 15px;
+      font-size: 1.1rem;
+      background-color: #fafafa;
+      padding: 10px 22px;
+      border-radius: 40px;
+      transition: background-color 0.3s, transform 0.2s;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      background-color: #696969;
+      transform: scale(1.05);
+      color: #111;
+    }
+
+    .section {
+      display: none;
+      position: relative;
+      padding: 60px 40px;
+      min-height: 80vh;
+      /* Fondo degradado vertical oscuro */
+      background: linear-gradient(180deg, #222222 0%, #000000 100%);
+      color: #FAFAFA;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section::before {
+      content: none; /* quitamos filtro imagen */
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 0 auto 20px auto;
+    }
+
+    img {
+      max-width: 60%;
+      height: auto;
+      border-radius: 8px;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    ul li {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      padding: 8px 12px;
+      border-left: 4px solid #D6CBB3;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    /* Logos pequeños alineados */
+    .logo-container img {
+      width: 90px;
+      height: auto;
+      vertical-align: middle;
+      margin: 0 8px;
+      filter: brightness(0) invert(1); /* Blanco para contraste en fondo oscuro */
+    }
+
+    /* Estilos acordeón */
+    .accordion {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 auto;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .accordion-button {
+      background-color: rgba(255,255,255,0.1);
+      border: none;
+      outline: none;
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-left: 4px solid #D6CBB3;
+      color: #FAFAFA;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    .accordion-button:hover {
+      background-color: rgba(214,203,179,0.3);
+      color: #111;
+    }
+
+    .panel {
+      padding: 10px 20px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 0 4px 4px 4px;
+      margin-bottom: 12px;
+      display: none;
+      font-size: 1rem;
+      color: #FAFAFA;
+    }
+
+    .panel.show {
+      display: block;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+.filosofos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.filosofo img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.filosofo img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+}
+
+.filosofo p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FAFAFA;
+}
+
+.accordion-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.accordion-button {
+  background-color: #FFF;
+  border: none;
+  padding: 10px 8px; /* más angosto */
+  font-size: 1rem;
+  border-left: 4px solid #FFF;
+  color: #111;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.accordion-button:hover {
+  background-color: #EAEAEA;
+  color: #000;
+}
+
+.panel {
+  grid-column: span 5; /* El panel ocupará todo el ancho */
+  padding: 10px;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  display: none;
+  color: #FAFAFA;
+  text-align: left;
+}
+
+.panel.show {
+  display: block;
+}
+
+.accordion-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.accordion-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.accordion-button {
+  background-color: #FFF;
+  border: none;
+  padding: 10px 8px;
+  font-size: 1rem;
+  border-left: 4px solid #FFF;
+  color: #111;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.accordion-button:hover {
+  background-color: #EAEAEA;
+  color: #000;
+}
+
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 0 0 4px 4px;
+  color: #FAFAFA;
+  text-align: left;
+  font-size: 0.9rem;
+  padding: 0 10px;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.panel.show {
+  padding: 10px;
+  max-height: 150px;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>Nuestra Página Web</h2>
+    <nav>
+      <a href="#" onclick="showSection('inicio')">Inicio</a>
+      <a href="#" onclick="showSection('sociales')">Ciencias Sociales</a>
+      <a href="#" onclick="showSection('filosofia')">Filosofía</a>
+      <a href="#" onclick="showSection('literatura')">Literatura</a>
+    </nav>
+  </header>
+
+  <div id="inicio" class="section active fade-in">
+  <div class="content-wrapper">
+    <h1>Página Principal</h1>
+    <p>Bienvenido a un espacio cuidadosamente diseñado con inspiración editorial. Explora las ideas desde un enfoque elegante y limpio.</p>
+
+    <section>
+      <h2>Trabajo realizado por:</h2>
+      <p>Diego Javier García Ponce</p>
+      <p>Jimmy Hamilton Ottoniel Chub Tiul</p>
+      <p>Marco Aurelio Riveiro Mollinedo</p>
+      <p style="font-style: italic;">Los 3 cursantes del grado de 4to bachillerato en Ciencias y Letras</p>
+
+      <p style="margin-top: 20px;">
+        Nos basamos en páginas web como Zara, Epic Games, Adidas, entre otras, para crear una página web limpia, bonita y minimalista.
+      </p>
+
+      <blockquote style="font-style: italic; color: #D6CBB3; margin: 40px auto; font-size: 1.5rem; max-width: 600px;">
+        "La simplicidad es la máxima sofisticación." — Leonardo da Vinci
+      </blockquote>
+
+      <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;">
+        <img src="https://hips.hearstapps.com/hmg-prod/images/rebajas-zara-hombre-enero-1641978305.jpg" alt="Diseño web minimalista" style="width: 30%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);" />
+        <img src="https://images.pexels.com/photos/233315/pexels-photo-233315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Diseño web elegante" style="width: 30%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);" />
+        <img src="https://www.hd-tecnologia.com/imagenes/articulos/2020/03/Epic-Games-firma-un-contrato-de-exclusividad-con-Remedy-PlayDead-y-Gen-Design.jpg" alt="Diseño web moderno" style="width: 30%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.4);" />
+      </div>
+
+      <div style="max-width: 600px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6; text-align: left;">
+        <p> <strong>Diseño elegante:</strong> Inspirado en páginas reconocidas.</p>
+        <p> <strong>Creatividad:</strong> Combinamos ideas para un estilo único.</p>
+        <p> <strong>Contenido:</strong> Filosofía, ciencias sociales y literatura.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+  <div id="sociales" class="section fade-in">
+    <div class="content-wrapper">
+      <h1>Ciencias Sociales</h1>
+      <p>Las ciencias sociales estudian el comportamiento humano en sociedad. Nos ayudan a entender fenómenos históricos, políticos, económicos y culturales.</p>
+      <img src="https://thumbs.dreamstime.com/b/mapa-mundial-de-escala-grises-pm-afeitar-elevaci%C3%B3n-en-la-proyecci%C3%B3n-fahey-centrado-el-meridiano-primo-284898274.jpg" alt="Ciencias Sociales">
+    </div>
+  </div>
+
+  <div id="filosofia" class="section fade-in">
+    <div class="content-wrapper">
+      <h1>Filosofía</h1>
+
+      <h2>¿Qué es la filosofía de la conducta?</h2>
+      <p>La filosofía de la conducta analiza cómo actuamos, qué motiva nuestras decisiones y cómo se relacionan con valores éticos o creencias morales.</p>
+      <img src="https://media.licdn.com/dms/image/v2/D4D12AQE4oB34N_mngA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1686914502602?e=2147483647&v=beta&t=secm1mivDe-W4L5HV0Cv3oz1AvFH3ZehWACxWgaxc-w" alt="Conducta">
+
+<h2>Exponentes de la Filosofía</h2>
+<div class="filosofos-grid">
+  <div class="filosofo">
+    <img src="https://imgs.search.brave.com/uGkiBLuYVCHGNC7nkXrJy3gEs04BAdznD742Tau2Moc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y3JlYXRlLnZpc3Rh/LmNvbS9hcGkvbWVk/aWEvc21hbGwvMzk3/NDYxODMvc3RvY2st/cGhvdG8tc29jcmF0/ZXMtdGhlLWFuY2ll/bnQtZ3JlZWstcGhp/bG9zb3BoZXI" alt="Sócrates">
+    <p>Sócrates</p>
+  </div>
+  <div class="filosofo">
+    <img src="https://imgs.search.brave.com/hPD234tA2rBwC60FHKoJzWAczu72cYnMxl8MHG4xtbM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvQUIz/MDU5Mi9mci9waG90/by9idXN0LW9mLXBs/YXRvLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1LakRxbjN5/VTl6S0RKTlMxc2VX/YV9OLW54TEhYR2xy/V1ZlZFEwUFRrcGJj/PQ" alt="Platón">
+    <p>Platón</p>
+  </div>
+  <div class="filosofo">
+    <img src="https://media.istockphoto.com/id/960907680/es/vector/antiguo-fil%C3%B3sofo-griego-arist%C3%B3teles-y-cient%C3%ADfico-1880.jpg?s=612x612&w=0&k=20&c=nblFHTaUhSeKB5gyVPPdZT2avG4C1VYwCj3CmEl6nFw=" alt="Aristóteles">
+    <p>Aristóteles</p>
+  </div>
+  <div class="filosofo">
+    <img src="https://content-historia.nationalgeographic.com.es/medio/2025/02/07/descartes-trabajando-en-su-escritorio-cc_d9114481_250207122518_800x1155.webp" alt="René Descartes">
+    <p>René Descartes</p>
+  </div>
+  <div class="filosofo">
+    <img src="https://media.istockphoto.com/id/1094422516/es/foto/retrato-de-immanuel-kant-fil%C3%B3sofo-alem%C3%A1n-1724-1804.jpg?s=612x612&w=0&k=20&c=46SmuBMJP172cfcQlc0SynC5HMAlq6M7th8oIW0lTk0=" alt="Immanuel Kant">
+    <p>Immanuel Kant</p>
+  </div>
+  <div class="filosofo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Nietzsche187c.jpg" alt="Friedrich Nietzsche">
+    <p>Friedrich Nietzsche</p>
+  </div>
+  <div class="filosofo">
+    <img src="https://cdn.britannica.com/18/60018-050-E8F7CB20/Jean-Jacques-Rousseau-pastels-Maurice-Quentin-de-La-Tour-1753.jpg" alt="Jean-Jacques Rousseau">
+    <p>Jean-Jacques Rousseau</p>
+  </div>
+  <div class="filosofo">
+    <img src="https://culturacientifica.com/app/uploads/2014/08/Locke-John-LOC.jpg" alt="John Locke">
+    <p>John Locke</p>
+  </div>
+</div>
+
+      <h2>¿Cuáles son los valores morales?</h2>
+      <p>Son principios que guían nuestro comportamiento para distinguir entre lo correcto e incorrecto y vivir en armonía con los demás.</p>
+      <img src="https://images.unsplash.com/photo-1585862705417-671ae64f0eb7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Valores morales">
+
+     <h2>20 valores morales y su significado</h2>
+<div class="accordion-grid">
+  <div class="accordion-item">
+    <button class="accordion-button">Respeto</button>
+    <div class="panel">Aceptar a los demás, aunque piensen diferente.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Responsabilidad</button>
+    <div class="panel">Cumplir con lo que se espera de uno mismo.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Justicia</button>
+    <div class="panel">Dar a cada quien lo que le corresponde.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Solidaridad</button>
+    <div class="panel">Apoyar a los demás sin esperar nada a cambio.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Empatía</button>
+    <div class="panel">Ponerse en el lugar del otro.</div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-button">Lealtad</button>
+    <div class="panel">Ser fiel a una persona o causa.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Amor</button>
+    <div class="panel">Afecto sincero hacia alguien o algo.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Honestidad</button>
+    <div class="panel">Decir la verdad y actuar con transparencia.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Tolerancia</button>
+    <div class="panel">Aceptar y convivir con ideas distintas.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Humildad</button>
+    <div class="panel">Reconocer nuestras limitaciones sin arrogancia.</div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-button">Perseverancia</button>
+    <div class="panel">Insistir para lograr un objetivo.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Paciencia</button>
+    <div class="panel">Saber esperar sin desesperarse.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Gratitud</button>
+    <div class="panel">Agradecer lo que recibimos.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Compasión</button>
+    <div class="panel">Sentir y actuar ante el dolor ajeno.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Generosidad</button>
+    <div class="panel">Compartir sin esperar retribución.</div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-button">Fidelidad</button>
+    <div class="panel">Mantener el compromiso con alguien o algo.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Dignidad</button>
+    <div class="panel">Valorarse y actuar con respeto personal.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Integridad</button>
+    <div class="panel">Ser coherente con lo que se piensa y se hace.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Disciplina</button>
+    <div class="panel">Tener control y orden para cumplir metas.</div>
+  </div>
+  <div class="accordion-item">
+    <button class="accordion-button">Equidad</button>
+    <div class="panel">Tratar a todos con justicia y sin favoritismos.</div>
+  </div>
+</div>
+
+
+  
+  <div id="literatura" class="section fade-in">
+    <div class="content-wrapper">
+      <h1>Literatura</h1>
+      <p>La literatura es el arte de expresar emociones, pensamientos e historias a través de la palabra escrita. Ha acompañado a la humanidad desde tiempos antiguos.</p>
+      <img src="https://p2.piqsels.com/preview/192/692/1007/dark-room-book-binding-thumbnail.jpg" alt="Libros">
+    </div>
+  </div>
+
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    // Script para acordeón
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.accordion-button').forEach(button => {
+        button.addEventListener('click', () => {
+          const panel = button.nextElementSibling;
+          const isVisible = panel.classList.contains('show');
+          // Cierra todos los paneles
+          document.querySelectorAll('.panel').forEach(p => p.classList.remove('show'));
+          if (!isVisible) {
+            panel.classList.add('show');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
